@@ -17,7 +17,7 @@ function submit(e) {
 const addToDo = () => {
   let ul = document.querySelector('ul')
   let li = document.createElement('li')
-  li.innerHTML = `<button name="deleteButton"></button>`
+  li.textContent = 
   ul.appendChild(li)
 }
 
