@@ -1,9 +1,7 @@
-// document.addEventListener("DOMContentLoaded", (e) => {
-//    console.log(e.target)
-   
-// })
+document.addEventListener("DOMContentLoaded", (e) => {
 
 document.querySelector('#create-task-form').addEventListener('submit', submit)
+document.querySelector('ul').addEventListener('click', handleDelete)
 
 function submit(e) {
   e.preventDefault()
@@ -14,19 +12,28 @@ function submit(e) {
     }
 }
 
-const addToDo = () => {
+function handleDelete(e)  {
+  if (e.target.name === 'deleteButton') {
+    deleteToDo(e)
+  }
+}
+
+function addToDo(todo) {
   let ul = document.querySelector('ul')
   let li = document.createElement('li')
-  li.textContent = 
+  li.innerHTML = `<span class="todo-item">${todo}</span>
+                  <button class="button" name="deleteButton">Delete</button>`
+  li.classList.add('add-todo')           
   ul.appendChild(li)
 }
 
+function deleteToDo(e) {
+  let item = e.target.parentNode
+  item.remove()
+}
 
-// const deleteTodo = () => {
-// const deleteBtn = document.createElement('button')
-// deleteBtn.textContent = "Delete"
-// document.querySelector('#list').appendChild(deleteBtn)
-// }
+}) // End of  DOMContentLoaded
+
 
 
 
