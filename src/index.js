@@ -1,20 +1,42 @@
 document.addEventListener("DOMContentLoaded", (e) => {
 
 const text = document.getElementById("new-task-description")
+const newTask = document.querySelector('#create-task-form')
 
-document.querySelector('#create-task-form').addEventListener('submit', submit)
+
+newTask.addEventListener('submit', submit)
 
 
 function submit(e) {
-  e.preventDefault()
-  const ul = document.getElementById('tasks')
-  const li = document.createElement('li')
-  li.textContent = text.value
-  const deleteBtn = document.createElement('button')
-  deleteBtn.innerHTML = `<button class="delete-btn">Delete</button>`
-  ul.appendChild(li)
-  li.appendChild(deleteBtn)
-  }
+e.preventDefault()
+const ul = document.getElementById('tasks')
+const li = document.createElement('li')
+li.textContent = text.value.toUpperCase()
+const deleteBtn = document.createElement('button')
+deleteBtn.innerHTML = 'Delete'
+deleteBtn.style.margin = '5px'
+deleteBtn.style.borderRadius = "6px"
+deleteBtn.style.backgroundColor = 'black'
+deleteBtn.style.color = 'white'
+ul.append(li)
+const select = document.createElement('select')
+const option = document.createElement('option')
+select.innerHTML = `<option>High</option>
+                    <option>Medium</option>
+                    <option>Low</option>`
+select.style.backgroundColor = 'black'
+select.style.color = 'white'
+select.style.borderRadius = '6px'
+select.append(option)
+li.append(deleteBtn, select)
+
+
+deleteBtn.addEventListener('click', (e) => {
+    e.target.parentNode.remove()
+  })
+}
+
+
 
 
 

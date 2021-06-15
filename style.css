@@ -20,11 +20,6 @@ body {
   padding: 10px;
 }
 
-.button:hover {
-  color:white;
-  background-color: black;
-}
-
 #main-content {
   position: relative;
   display: flex;
